@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<head>
+    <meta charset="UTF-8">
+    <title>Chatbot</title>
+</head>
+<body>
+    <div class="top-menu">
+        <div id="top-inner">
+            <div id="logo"></div>
+            <div id="form-div">
+                <form action="search" method="get">
+                    <input class="search-bar" type="text" name="search">
+                    <input class="search-btn" type="submit" value=" ">
+                </form>
+            </div>
+            <div id="menu-btn">
+                <div class="menu"></div>
+                <div class="menu"></div>
+                <div class="menu"></div>
+            </div>
+        </div>
+    </div>
+    <div id="search-content-wrap">
+        <img class="search-content" src="{{ movie.poster[0] }}">
+        <div id="mv-cover"><div id="cover"></div>
+        <img id="play-icon" src="../static/images/play_icon.png"></div>
+    </div>
+    <h2 id="mv-title">{{ movie.title }}</h2>
+    <div id="disc-wrap">
+        <p class="disc">장르: {{ ", ".join(movie.genres) }}</p>
+        <p class="disc">줄거리: {{ movie.overview }}</p>
+        <p class="disc">출연진: {{ ", ".join(movie.cast) }}</p>
+        <p class="disc">감독: {{ movie.director[0] }}</p>
+    </div>
+    <div class="container">
+        <div class="chatbox">
+            <div class="chatbox__support">
+                <div class="chatbox__header">
+                    <div class="chatbox__image--header">
+                        <img src="https://img.icons8.com/color/48/000000/circled-user-female-skin-type-5--v1.png" alt="image">
+                    </div>
+                    <div class="chatbox__content--header">
+                        <h4 class="chatbox__heading--header">영화 추천 챗봇</h4>
+                        <p class="chatbox__description--header">안녕하세요. 취향에 맞는 영화를 추천해드리겠습니다.</p>
+                    </div>
+                </div>
+                <div class="chatbox__messages">
+                    <div></div>
+                </div>
+                <div class="chatbox__footer">
+                    <input type="text" placeholder="Write a message...">
+                    <button class="chatbox__send--footer send__button">전송</button>
+                </div>
+            </div>
+            <div class="chatbox__button">
+                <button><img src="{{ url_for('static', filename='images/chatbox-icon.svg') }}" /></button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $SCRIPT_ROOT = {{ request.script_root|tojson }};
+        var logoButton = document.getElementById('logo');
+        logoButton.addEventListener('click', function(){
+        window.location.href = '/'})
+    </script>
+    <script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
