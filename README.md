@@ -1,52 +1,37 @@
-# Chatbot Deployment with Flask and JavaScript
+# 🎞 퍼스널필름
+사용자 입력에 기반한 영화 추천 서비스  
 
-In this tutorial we deploy the chatbot I created in [this](https://github.com/python-engineer/pytorch-chatbot) tutorial with Flask and JavaScript.
 
-This gives 2 deployment options:
-- Deploy within Flask app with jinja2 template
-- Serve only the Flask prediction API. The used html and javascript files can be included in any Frontend application (with only a slight modification) and can run completely separate from the Flask App then.
+## 1. 프로젝트 개요
+챗봇을 통해 개인 맞춤형 영화를 추천하는 웹 애플리케이션입니다.
 
-## Initial Setup:
-This repo currently contains the starter files.
+수많은 선택지 속에서 원하는 콘텐츠를 찾는 것은 쉽지 않습니다.
 
-Clone repo and create a virtual environment
-```
-$ git clone https://github.com/python-engineer/chatbot-deployment.git
-$ cd chatbot-deployment
-$ python3 -m venv venv
-$ . venv/bin/activate
-```
-Install dependencies
-```
-$ (venv) pip install Flask torch torchvision nltk
-```
-Install nltk package
-```
-$ (venv) python
->>> import nltk
->>> nltk.download('punkt')
-```
-Modify `intents.json` with different intents and responses for your Chatbot
+이를 해결하기 위해 챗봇을 도입하였으며, 사용자 경험 향상을 목표로 제작되었습니다.  
 
-Run
-```
-$ (venv) python train.py
-```
-This will dump data.pth file. And then run
-the following command to test it in the console.
-```
-$ (venv) python chat.py
-```
 
-Now for deployment follow my tutorial to implement `app.py` and `app.js`.
+## 2. 주요 기능
+- 검색 기능🔍  
+  ![메인 페이지](static/images/SearchFeature.png)  
+  - 영화 제목 입력 → 포스터, 장르, 줄거리, 출연진, 감독 등 영화 정보 제공  
+- 랜덤 추천 기능👍  
+  ![메인 페이지](static/images/RecommendFeature.png)  
+  - 랜덤 카드형 배너 4개(swipe 라이브러리 사용) → 포스터에 호버하면 제목, 장르, 줄거리, 출연진, 감독 정보 표시  
+- 챗봇 모델🙍‍♀️  
+  ![메인 페이지](static/images/ChatFeature.png)  
+  - 사용자가 필요할 때만 활성화 가능한 토글 형태로 구현  
+  - 챗봇이 영화 관련된 질문을 던져 사용자의 취향 분석  
+  - 영화 유사도 기반으로 연관성 높은 영화 4개 추천  
 
-## Watch the Tutorial
-[![Alt text](https://img.youtube.com/vi/a37BL0stIuM/hqdefault.jpg)](https://youtu.be/a37BL0stIuM)  
-[https://youtu.be/a37BL0stIuM](https://youtu.be/a37BL0stIuM)
+ 
+## 3. 기술 스택  
+- Frontend: HTML, CSS, JavaScript  
+- Backend: Python, Flask  
+- Data Analysis/Machine Learning: pandas, numpy, scikit-learn  
+- API: TMDb API, OpenAI API  
 
-## Note
-In the video we implement the first approach using jinja2 templates within our Flask app. Only slight modifications are needed to run the frontend separately. I put the final frontend code for a standalone frontend application in the [standalone-frontend](/standalone-frontend) folder.
 
-## Credits:
-This repo was used for the frontend code:
-https://github.com/hitchcliff/front-end-chatjs
+## 4. 시스템 동작 과정💬  
+  <p align="center">
+  <img src="static/images/SystemFlow.png" alt="시스템 동작 과정">
+</p>  
